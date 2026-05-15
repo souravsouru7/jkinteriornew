@@ -1,0 +1,402 @@
+"use client";
+
+import { useRef } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { motion, useInView, type Variants } from "framer-motion";
+import SiteFooter from "./SiteFooter";
+
+// ─── Data ────────────────────────────────────────────────────────────────────
+
+const SERVICES = [
+  {
+    id: "01",
+    title: "Residential Interiors",
+    summary: "Calm, storage-aware rooms shaped around daily routines.",
+    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1100&q=88",
+    span: "tall",
+  },
+  {
+    id: "02",
+    title: "Modular Kitchens",
+    summary: "Precise workflow planning, durable finishes, and elegant hardware.",
+    image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1100&q=88",
+    span: "wide",
+  },
+  {
+    id: "03",
+    title: "Wardrobes & Storage",
+    summary: "Measured storage systems that reduce clutter before styling begins.",
+    image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1100&q=88",
+    span: "square",
+  },
+  {
+    id: "04",
+    title: "False Ceilings & Lighting",
+    summary: "Layered lighting plans that make rooms feel softer and more intentional.",
+    image: "https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1100&q=88",
+    span: "square",
+  },
+  {
+    id: "05",
+    title: "Turnkey Interiors",
+    summary: "One accountable team for concept, materials, execution, and handover.",
+    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=88",
+    span: "wide",
+  },
+  {
+    id: "06",
+    title: "Renovation & Remodeling",
+    summary: "Thoughtful upgrades that protect budget while changing how a space feels.",
+    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=88",
+    span: "tall",
+  },
+];
+
+const GALLERY_PREVIEW = [
+  {
+    title: "Quiet Villa Living",
+    location: "Jubilee Hills",
+    image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=90",
+  },
+  {
+    title: "Executive Workspace",
+    location: "HITEC City",
+    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90",
+  },
+  {
+    title: "Layered Bedroom Styling",
+    location: "Madhapur",
+    image: "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=1200&q=90",
+  },
+];
+
+const TESTIMONIALS = [
+  {
+    quote: "JK Interiors understood how our family actually uses the home. The result feels polished, practical, and very personal.",
+    name: "Ananya R.",
+    role: "Residential · Jubilee Hills",
+    initial: "AR",
+  },
+  {
+    quote: "Their material suggestions and site updates made the whole renovation feel controlled. We never felt left guessing.",
+    name: "Rahul M.",
+    role: "Renovation · Kondapur",
+    initial: "RM",
+  },
+  {
+    quote: "The wardrobes, kitchen, and lighting were planned with a lot of care. The home finally feels calm and complete.",
+    name: "Sravya K.",
+    role: "Turnkey · Gachibowli",
+    initial: "SK",
+  },
+];
+
+const PROCESS = [
+  { id: "01", label: "Consultation" },
+  { id: "02", label: "Design" },
+  { id: "03", label: "Materials" },
+  { id: "04", label: "Execution" },
+  { id: "05", label: "Handover" },
+];
+
+// ─── Variants ────────────────────────────────────────────────────────────────
+
+const fadeUp: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: "easeOut" } },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.11 } },
+};
+
+// ─── Section header helper ────────────────────────────────────────────────────
+
+function SectionHeader({ kicker, heading, sub }: { kicker: string; heading: React.ReactNode; sub?: string }) {
+  return (
+    <div className="flex flex-col gap-5 mb-14 lg:mb-18">
+      <div className="flex items-center gap-4">
+        <div className="h-px w-12" style={{ background: "var(--gold)" }} />
+        <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>
+          {kicker}
+        </span>
+      </div>
+      <h2 className="font-light text-white leading-[1.06]" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4.5vw, 4rem)", maxWidth: "22ch" }}>
+        {heading}
+      </h2>
+      {sub && (
+        <p className="max-w-xl leading-relaxed" style={{ color: "rgba(255,255,255,0.42)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
+          {sub}
+        </p>
+      )}
+    </div>
+  );
+}
+
+// ─── Services Section ─────────────────────────────────────────────────────────
+
+function ServicesSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-6%" });
+
+  return (
+    <section className="py-24 lg:py-36" style={{ background: "#070707", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
+          <motion.div variants={fadeUp}>
+            <SectionHeader
+              kicker="What we offer"
+              heading={<>Six disciplines. One <em style={{ color: "var(--gold-soft)" }}>unified</em> vision.</>}
+              sub="From layout planning to final styling — every service built around how you actually live."
+            />
+          </motion.div>
+
+          {/* Bento grid */}
+          <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-3">
+            {SERVICES.map((s) => (
+              <motion.div
+                key={s.id}
+                variants={fadeUp}
+                className={`group relative overflow-hidden ${s.span === "tall" ? "row-span-2" : s.span === "wide" ? "col-span-2" : ""}`}
+                style={{ minHeight: s.span === "tall" ? "520px" : "260px" }}
+              >
+                <Image src={s.image} alt={s.title} fill sizes="(min-width:1280px) 28vw, (min-width:768px) 45vw, 100vw" className="object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]" />
+                <div className="absolute inset-0 transition-opacity duration-500" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.3) 55%, transparent 100%)", opacity: 0.85 }} />
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-400" style={{ background: "rgba(7,7,7,0.15)" }} />
+
+                {/* Number */}
+                <span className="absolute top-4 left-5" style={{ fontFamily: "var(--font-label)", fontSize: "0.6rem", letterSpacing: "0.18em", color: "rgba(255,255,255,0.35)" }}>
+                  {s.id}
+                </span>
+
+                {/* Caption */}
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2 transition-transform duration-500 ease-out" style={{ transform: "translateY(0)" }}>
+                  <h3 className="text-white font-light" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>
+                    {s.title}
+                  </h3>
+                  <p className="text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-label)" }}>
+                    {s.summary}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Process strip */}
+          <motion.div variants={fadeUp} className="mt-12 flex items-center gap-0 overflow-x-auto border-t pt-10" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+            {PROCESS.map((step, i) => (
+              <div key={step.id} className="flex items-center gap-4 flex-shrink-0">
+                <div className="flex flex-col gap-1">
+                  <span style={{ fontFamily: "var(--font-label)", fontSize: "0.58rem", letterSpacing: "0.16em", color: "var(--gold)" }}>{step.id}</span>
+                  <span className="text-sm whitespace-nowrap" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-label)" }}>{step.label}</span>
+                </div>
+                {i < PROCESS.length - 1 && (
+                  <div className="w-12 lg:w-20 h-px mx-4 flex-shrink-0" style={{ background: "rgba(255,255,255,0.1)" }} />
+                )}
+              </div>
+            ))}
+          </motion.div>
+
+          {/* Link */}
+          <motion.div variants={fadeUp} className="mt-10">
+            <Link href="/services" className="jk-secondary-btn" style={{ minWidth: "auto", padding: "0 28px" }}>
+              All services →
+            </Link>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Gallery Preview ──────────────────────────────────────────────────────────
+
+function GalleryPreviewSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-6%" });
+
+  return (
+    <section className="py-24 lg:py-36" style={{ background: "#070707", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
+          <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 gap-6 flex-wrap">
+            <SectionHeader
+              kicker="Selected work"
+              heading={<>Work that speaks <em style={{ color: "var(--gold-soft)" }}>before</em> we do.</>}
+            />
+            <Link href="/gallery" className="jk-secondary-btn flex-shrink-0 self-start mt-2" style={{ minWidth: "auto", padding: "0 24px" }}>
+              Full gallery →
+            </Link>
+          </motion.div>
+
+          <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {GALLERY_PREVIEW.map((item) => (
+              <motion.div key={item.title} variants={fadeUp} className="group relative overflow-hidden" style={{ minHeight: "360px" }}>
+                <Image src={item.image} alt={item.title} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]" />
+                <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.85) 0%, transparent 55%)" }} />
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1.5">
+                  <span className="text-xs uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-label)" }}>{item.location}</span>
+                  <h3 className="text-white font-light" style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem" }}>{item.title}</h3>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Testimonials ─────────────────────────────────────────────────────────────
+
+function TestimonialsSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-8%" });
+
+  return (
+    <section className="py-24 lg:py-36" style={{ background: "linear-gradient(180deg,#0a0908 0%,#070707 100%)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+        <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
+          <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 flex-wrap gap-6">
+            <SectionHeader
+              kicker="Client voices"
+              heading={<>Spaces people <em style={{ color: "var(--gold-soft)" }}>settle into.</em></>}
+            />
+            <div className="flex flex-col items-end gap-1 self-start">
+              <span className="font-light leading-none" style={{ fontFamily: "var(--font-display)", fontSize: "2.8rem", color: "var(--gold-soft)" }}>5.0</span>
+              <span className="text-xs uppercase tracking-[0.14em]" style={{ color: "rgba(255,255,255,0.3)", fontFamily: "var(--font-label)" }}>Average rating</span>
+            </div>
+          </motion.div>
+
+          <motion.div variants={stagger} className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+            {TESTIMONIALS.map((t) => (
+              <motion.div key={t.name} variants={fadeUp} className="flex flex-col gap-6 p-8" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}>
+                <span className="leading-none select-none" style={{ fontFamily: "var(--font-display)", fontSize: "3.5rem", color: "var(--gold)", opacity: 0.35, lineHeight: 1 }}>"</span>
+                <blockquote className="font-light italic leading-relaxed flex-1" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 1.4vw, 1.12rem)", color: "rgba(255,255,255,0.72)" }}>
+                  {t.quote}
+                </blockquote>
+                <div className="h-px w-10" style={{ background: "linear-gradient(90deg, var(--gold), transparent)" }} />
+                <div className="flex items-center gap-4">
+                  <div className="flex-shrink-0 w-10 h-10 flex items-center justify-center" style={{ background: "rgba(216,189,125,0.06)", border: "1px solid rgba(216,189,125,0.22)" }}>
+                    <span className="text-xs font-semibold" style={{ color: "var(--gold)", fontFamily: "var(--font-label)", letterSpacing: "0.06em" }}>{t.initial}</span>
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.78)", fontFamily: "var(--font-label)" }}>{t.name}</span>
+                    <span className="text-xs" style={{ color: "rgba(255,255,255,0.32)", fontFamily: "var(--font-label)" }}>{t.role}</span>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Studio Teaser ────────────────────────────────────────────────────────────
+
+function StudioTeaserSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-8%" });
+
+  return (
+    <section className="overflow-hidden" style={{ borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 min-h-[65vh]">
+        {/* Image */}
+        <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.85 } } }} className="relative min-h-[50vw] lg:min-h-0 order-2 lg:order-1">
+          <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=90" alt="JK Interiors studio" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent, rgba(7,7,7,0.25))" }} />
+          {/* Floating badge */}
+          <div className="absolute bottom-6 left-6 flex flex-col gap-1 px-5 py-4" style={{ background: "rgba(7,7,7,0.78)", backdropFilter: "blur(10px)", border: "1px solid rgba(216,189,125,0.18)" }}>
+            <span className="text-xs uppercase tracking-[0.16em]" style={{ color: "var(--gold)", fontFamily: "var(--font-label)" }}>Studio ethos</span>
+            <span className="font-light text-white" style={{ fontFamily: "var(--font-display)", fontSize: "1rem" }}>Material calm. Storage first. Detail always.</span>
+          </div>
+        </motion.div>
+
+        {/* Copy */}
+        <motion.div variants={fadeUp} className="order-1 lg:order-2 flex flex-col justify-center gap-8 px-8 py-16 lg:px-14 xl:px-20" style={{ background: "#070707" }}>
+          <SectionHeader
+            kicker="About JK Interiors"
+            heading={<>Designing <em style={{ color: "var(--gold-soft)" }}>experiences,</em> not just rooms.</>}
+          />
+          <p className="leading-relaxed -mt-6" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
+            A Hyderabad-based studio working around the way people move, cook, gather, rest, and store the things
+            that matter. Every decision balances function, livability, materials, and disciplined execution.
+          </p>
+          <div className="flex gap-4 flex-wrap">
+            <Link href="/about" className="jk-primary-btn" style={{ minWidth: "auto", padding: "0 28px" }}>About the studio</Link>
+            <Link href="/philosophy" className="jk-secondary-btn" style={{ minWidth: "auto", padding: "0 28px" }}>Our philosophy</Link>
+          </div>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─── CTA Section ─────────────────────────────────────────────────────────────
+
+function CtaSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-10%" });
+
+  const containerVariants: Variants = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.13 } },
+  };
+
+  return (
+    <section
+      className="relative overflow-hidden py-28 lg:py-40"
+      style={{ background: "linear-gradient(135deg,#0d0b08 0%,#0f0e0b 50%,#070707 100%)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+    >
+      <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle,rgba(216,189,125,0.07) 0%,transparent 70%)" }} />
+      <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle,rgba(216,189,125,0.04) 0%,transparent 70%)" }} />
+
+      <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={containerVariants} className="relative z-10 max-w-4xl mx-auto px-6 lg:px-12 text-center flex flex-col items-center gap-8">
+        <motion.div variants={fadeUp} className="flex items-center justify-center gap-4">
+          <div className="h-px w-12" style={{ background: "var(--gold)" }} />
+          <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>Start your project</span>
+          <div className="h-px w-12" style={{ background: "var(--gold)" }} />
+        </motion.div>
+
+        <motion.h2 variants={fadeUp} className="font-light text-white leading-[1.06]" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.5rem,5.5vw,5rem)" }}>
+          Every great space begins with{" "}
+          <em style={{ color: "var(--gold-soft)" }}>one conversation.</em>
+        </motion.h2>
+
+        <motion.p variants={fadeUp} className="max-w-lg leading-relaxed" style={{ color: "rgba(255,255,255,0.46)", fontFamily: "var(--font-label)", fontSize: "1rem" }}>
+          Tell us about your space. We'll listen first, design second — and deliver something
+          that feels entirely yours.
+        </motion.p>
+
+        <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-4 pt-2">
+          <a
+            href={`https://wa.me/919063096060?text=${encodeURIComponent("Hi, I'd like to schedule a consultation with JK Interiors.")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="jk-primary-btn"
+          >Schedule a consultation</a>
+          <Link href="/gallery" className="jk-secondary-btn">View our work</Link>
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+// ─── Page export ─────────────────────────────────────────────────────────────
+
+export default function LandingSections() {
+  return (
+    <>
+      <ServicesSection />
+      <GalleryPreviewSection />
+      <TestimonialsSection />
+      <StudioTeaserSection />
+      <CtaSection />
+      <SiteFooter />
+    </>
+  );
+}
