@@ -177,8 +177,8 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/50 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-[#141210]/50 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/50 to-transparent" />
       </motion.div>
 
       <motion.div
@@ -309,7 +309,7 @@ function FilterBar({
               className="relative px-4 py-2 text-xs uppercase tracking-[0.14em] transition-colors duration-200"
               style={{
                 fontFamily: "var(--font-label)",
-                color: isActive ? "#070707" : "rgba(255,255,255,0.45)",
+                color: isActive ? "#141210" : "rgba(255,255,255,0.45)",
                 border: "1px solid",
                 borderColor: isActive ? "var(--gold)" : "rgba(255,255,255,0.12)",
                 background: isActive ? "var(--gold)" : "transparent",
@@ -680,7 +680,7 @@ function GallerySection() {
   }, [active]);
 
   return (
-    <section className="py-24 lg:py-32" style={{ background: "#070707" }}>
+    <section className="py-24 lg:py-32" style={{ background: "#141210" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Section intro */}
         <motion.div
@@ -778,7 +778,7 @@ function CtaSection() {
     <section
       className="relative overflow-hidden py-28 lg:py-40"
       style={{
-        background: "linear-gradient(135deg, #0d0b08 0%, #0f0e0b 50%, #070707 100%)",
+        background: "linear-gradient(135deg, #1a1715 0%, #1c1a16 50%, #141210 100%)",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -847,7 +847,7 @@ function CtaSection() {
 
 export default function GalleryPage() {
   return (
-    <main style={{ background: "#070707" }}>
+    <main style={{ background: "#141210" }}>
       <SiteHeader />
       <HeroSection />
       <GallerySection />

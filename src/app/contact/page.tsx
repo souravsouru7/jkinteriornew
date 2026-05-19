@@ -89,8 +89,8 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/55 to-[#070707]/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/65 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-[#141210]/55 to-[#141210]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/65 to-transparent" />
       </motion.div>
 
       <motion.div
@@ -197,7 +197,7 @@ function ContactSection() {
   }
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#070707" }}>
+    <section className="py-24 lg:py-36" style={{ background: "#141210" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div
           ref={ref}
@@ -604,7 +604,7 @@ function FlowSection() {
     <section
       className="py-24 lg:py-32"
       style={{
-        background: "linear-gradient(180deg, #0a0908 0%, #070707 100%)",
+        background: "linear-gradient(180deg, #1a1715 0%, #141210 100%)",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -655,7 +655,7 @@ function FlowSection() {
 
 export default function ContactPage() {
   return (
-    <main style={{ background: "#070707" }}>
+    <main style={{ background: "#141210" }}>
       <SiteHeader />
       <HeroSection />
       <ContactSection />

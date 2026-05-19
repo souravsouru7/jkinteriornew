@@ -101,7 +101,7 @@ export default function SiteHeader() {
               className="fixed top-0 right-0 bottom-0 z-[90] flex flex-col"
               style={{
                 width: "min(320px, 88vw)",
-                background: "#0a0908",
+                background: "#1a1715",
                 borderLeft: "1px solid rgba(216,189,125,0.15)",
               }}
               initial={{ x: "100%" }}

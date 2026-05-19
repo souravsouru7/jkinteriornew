@@ -189,7 +189,7 @@ function ServiceCard({
       {/* ── Content side ── */}
       <motion.div
         variants={fadeUp}
-        className={`flex flex-col justify-center gap-8 px-8 py-14 lg:px-14 xl:px-20 xl:py-20 bg-[#070707] ${
+        className={`flex flex-col justify-center gap-8 px-8 py-14 lg:px-14 xl:px-20 xl:py-20 bg-[#141210] ${
           !isEven ? "lg:order-1" : ""
         }`}
       >
@@ -370,8 +370,8 @@ function HeroSection() {
           className="object-cover"
         />
         {/* Multi-layer gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/40 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-[#141210]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/60 to-transparent" />
       </motion.div>
 
       {/* Content */}
@@ -524,7 +524,7 @@ function ProcessSection() {
   const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#070707" }}>
+    <section className="py-24 lg:py-36" style={{ background: "#141210" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -578,7 +578,7 @@ function CtaSection() {
     <section
       className="relative overflow-hidden py-28 lg:py-40"
       style={{
-        background: "linear-gradient(135deg, #0d0b08 0%, #0f0e0b 50%, #070707 100%)",
+        background: "linear-gradient(135deg, #1a1715 0%, #1c1a16 50%, #141210 100%)",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -650,7 +650,7 @@ function CtaSection() {
 
 export default function ServicesPage() {
   return (
-    <main style={{ background: "#070707" }}>
+    <main style={{ background: "#141210" }}>
       <SiteHeader />
       <HeroSection />
       <StatsBar />

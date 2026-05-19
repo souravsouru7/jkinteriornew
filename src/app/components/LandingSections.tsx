@@ -12,42 +12,42 @@ const SERVICES = [
   {
     id: "01",
     title: "Residential Interiors",
-    summary: "Calm, storage-aware rooms shaped around daily routines.",
+    summary: "Functional, refined living spaces designed around movement, storage, and everyday comfort.",
     image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1100&q=88",
     span: "tall",
   },
   {
     id: "02",
     title: "Modular Kitchens",
-    summary: "Precise workflow planning, durable finishes, and elegant hardware.",
+    summary: "Efficient kitchen systems planned for workflow, durability, and seamless daily use.",
     image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1100&q=88",
     span: "wide",
   },
   {
     id: "03",
     title: "Wardrobes & Storage",
-    summary: "Measured storage systems that reduce clutter before styling begins.",
+    summary: "Smart storage layouts designed to maximize usability without overwhelming the space.",
     image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1100&q=88",
     span: "square",
   },
   {
     id: "04",
     title: "False Ceilings & Lighting",
-    summary: "Layered lighting plans that make rooms feel softer and more intentional.",
+    summary: "Ceiling and lighting systems designed to improve mood, depth, and spatial balance.",
     image: "https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1100&q=88",
     span: "square",
   },
   {
     id: "05",
     title: "Turnkey Interiors",
-    summary: "One accountable team for concept, materials, execution, and handover.",
+    summary: "One accountable team managing design, materials, execution, timelines, and final handover.",
     image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=88",
     span: "wide",
   },
   {
     id: "06",
     title: "Renovation & Remodeling",
-    summary: "Thoughtful upgrades that protect budget while changing how a space feels.",
+    summary: "Thoughtful upgrades that modernize spaces while maintaining budget control and structural clarity.",
     image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=88",
     span: "tall",
   },
@@ -56,17 +56,20 @@ const SERVICES = [
 const GALLERY_PREVIEW = [
   {
     title: "Quiet Villa Living",
-    location: "Jubilee Hills",
+    subtitle: "4BHK Villa · 60-Day Turnkey Execution",
+    desc: "Designed around open movement, layered lighting, and concealed storage to maintain visual calm across the home.",
     image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=90",
   },
   {
     title: "Executive Workspace",
-    location: "HITEC City",
+    subtitle: "Commercial Office · HITEC City",
+    desc: "A workspace balancing focus, circulation, and premium material detailing without visual clutter.",
     image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90",
   },
   {
     title: "Layered Bedroom Styling",
-    location: "Madhapur",
+    subtitle: "Residential · Madhapur",
+    desc: "Soft textures, integrated lighting, and practical storage systems designed for everyday ease.",
     image: "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=1200&q=90",
   },
 ];
@@ -90,14 +93,20 @@ const TESTIMONIALS = [
     role: "Turnkey · Gachibowli",
     initial: "SK",
   },
+  {
+    quote: "The coordination and execution were handled with a lot of discipline. Every stage felt clear, organized, and professionally managed.",
+    name: "Verified Client",
+    role: "Turnkey · Hyderabad",
+    initial: "VC",
+  },
 ];
 
 const PROCESS = [
-  { id: "01", label: "Consultation" },
-  { id: "02", label: "Design" },
-  { id: "03", label: "Materials" },
-  { id: "04", label: "Execution" },
-  { id: "05", label: "Handover" },
+  { id: "01", label: "Consultation", desc: "Understanding lifestyle, space needs, and budget priorities." },
+  { id: "02", label: "Design", desc: "Layouts, storage planning, materials, and visual direction tailored to your lifestyle." },
+  { id: "03", label: "Materials", desc: "Curated finishes, textures, hardware, and quality-led material selection." },
+  { id: "04", label: "Execution", desc: "Disciplined site management with timeline-focused execution and supervision." },
+  { id: "05", label: "Handover", desc: "Final walkthrough, detailing, quality checks, and post-completion support." },
 ];
 
 // ─── Variants ────────────────────────────────────────────────────────────────
@@ -142,7 +151,7 @@ function ServicesSection() {
   const inView = useInView(ref, { once: true, margin: "-6%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#070707", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+    <section className="py-24 lg:py-36" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp}>
@@ -185,16 +194,12 @@ function ServicesSection() {
           </motion.div>
 
           {/* Process strip */}
-          <motion.div variants={fadeUp} className="mt-12 flex items-center gap-0 overflow-x-auto border-t pt-10" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
-            {PROCESS.map((step, i) => (
-              <div key={step.id} className="flex items-center gap-4 flex-shrink-0">
-                <div className="flex flex-col gap-1">
-                  <span style={{ fontFamily: "var(--font-label)", fontSize: "0.58rem", letterSpacing: "0.16em", color: "var(--gold)" }}>{step.id}</span>
-                  <span className="text-sm whitespace-nowrap" style={{ color: "rgba(255,255,255,0.6)", fontFamily: "var(--font-label)" }}>{step.label}</span>
-                </div>
-                {i < PROCESS.length - 1 && (
-                  <div className="w-12 lg:w-20 h-px mx-4 flex-shrink-0" style={{ background: "rgba(255,255,255,0.1)" }} />
-                )}
+          <motion.div variants={fadeUp} className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 border-t pt-10" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
+            {PROCESS.map((step) => (
+              <div key={step.id} className="flex flex-col gap-2">
+                <span style={{ fontFamily: "var(--font-label)", fontSize: "0.58rem", letterSpacing: "0.16em", color: "var(--gold)" }}>{step.id}</span>
+                <span className="text-sm font-medium" style={{ color: "rgba(255,255,255,0.75)", fontFamily: "var(--font-label)" }}>{step.label}</span>
+                <span className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.38)", fontFamily: "var(--font-label)" }}>{step.desc}</span>
               </div>
             ))}
           </motion.div>
@@ -218,7 +223,7 @@ function GalleryPreviewSection() {
   const inView = useInView(ref, { once: true, margin: "-6%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#070707", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+    <section className="py-24 lg:py-36" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 gap-6 flex-wrap">
@@ -236,9 +241,10 @@ function GalleryPreviewSection() {
               <motion.div key={item.title} variants={fadeUp} className="group relative overflow-hidden" style={{ minHeight: "360px" }}>
                 <Image src={item.image} alt={item.title} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.85) 0%, transparent 55%)" }} />
-                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-1.5">
-                  <span className="text-xs uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-label)" }}>{item.location}</span>
+                <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2">
+                  <span className="text-xs uppercase tracking-[0.12em]" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-label)" }}>{item.subtitle}</span>
                   <h3 className="text-white font-light" style={{ fontFamily: "var(--font-display)", fontSize: "1.3rem" }}>{item.title}</h3>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-label)" }}>{item.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -256,7 +262,7 @@ function TestimonialsSection() {
   const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "linear-gradient(180deg,#0a0908 0%,#070707 100%)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+    <section className="py-24 lg:py-36" style={{ background: "linear-gradient(180deg,#1a1715 0%,#141210 100%)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 flex-wrap gap-6">
@@ -270,7 +276,7 @@ function TestimonialsSection() {
             </div>
           </motion.div>
 
-          <motion.div variants={stagger} className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
             {TESTIMONIALS.map((t) => (
               <motion.div key={t.name} variants={fadeUp} className="flex flex-col gap-6 p-8" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}>
                 <span className="leading-none select-none" style={{ fontFamily: "var(--font-display)", fontSize: "3.5rem", color: "var(--gold)", opacity: 0.35, lineHeight: 1 }}>"</span>
@@ -290,6 +296,264 @@ function TestimonialsSection() {
               </motion.div>
             ))}
           </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
+// ─── Why Projects Go Wrong ───────────────────────────────────────────────────
+
+const PROBLEMS = [
+  {
+    n: "01",
+    label: "Fragmented vendor management",
+    context: "No single point of contact means coordination breaks down mid-project — and no one is accountable when it does.",
+  },
+  {
+    n: "02",
+    label: "Timeline slippage",
+    context: "Without structured supervision, delays compound silently. Most clients only realise at handover.",
+  },
+  {
+    n: "03",
+    label: "Budget opacity",
+    context: "Costs surface late in the process, leaving clients without the time or leverage to respond effectively.",
+  },
+  {
+    n: "04",
+    label: "Unsupervised site execution",
+    context: "Work without dedicated on-site oversight produces inconsistent quality that is expensive to correct after completion.",
+  },
+  {
+    n: "05",
+    label: "No post-handover accountability",
+    context: "Once the project closes, most contractors become unreachable. Issues that surface later are left unaddressed.",
+  },
+];
+
+const SOLUTIONS = [
+  {
+    n: "01",
+    label: "Single-team execution",
+    context: "Design, materials, and site managed under one roof by one team — from first brief to final handover.",
+  },
+  {
+    n: "02",
+    label: "One-point accountability",
+    context: "One dedicated lead manages the entire project. Full responsibility. No handoffs. No communication gaps.",
+  },
+  {
+    n: "03",
+    label: "Structured 45–60 day timelines",
+    context: "Every project runs on defined milestones with regular client updates and disciplined on-site supervision.",
+  },
+  {
+    n: "04",
+    label: "Dedicated backend teams",
+    context: "Trained execution teams present on-site throughout — not just at the start. Quality is supervised, not assumed.",
+  },
+  {
+    n: "05",
+    label: "Transparent cost planning",
+    context: "Full costs are fixed and communicated upfront. No hidden revisions, no surprises after work begins.",
+  },
+  {
+    n: "06",
+    label: "Long-term client support",
+    context: "One year of free maintenance and a 10-year material warranty. The relationship does not end at handover.",
+  },
+];
+
+function WhyProjectsGoWrongSection() {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-5%" });
+
+  return (
+    <section
+      className="relative overflow-hidden py-28 lg:py-44"
+      style={{
+        background: "linear-gradient(180deg, #1a1715 0%, #141210 60%, #1a1715 100%)",
+        borderBottom: "1px solid rgba(255,255,255,0.07)",
+      }}
+    >
+      {/* Ambient glow */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(216,189,125,0.05) 0%, transparent 70%)",
+        }}
+      />
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+        <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
+
+          {/* Header — centred */}
+          <motion.div variants={fadeUp} className="max-w-2xl mx-auto text-center mb-20 lg:mb-28 flex flex-col items-center gap-5">
+            <div className="flex items-center gap-4">
+              <div className="h-px w-10" style={{ background: "var(--gold)" }} />
+              <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>
+                Industry reality
+              </span>
+              <div className="h-px w-10" style={{ background: "var(--gold)" }} />
+            </div>
+            <h2
+              className="font-light text-white leading-[1.06]"
+              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2rem, 4.5vw, 4rem)" }}
+            >
+              Why most interior projects{" "}
+              <em style={{ color: "var(--gold-soft)" }}>go wrong.</em>
+            </h2>
+            <p
+              className="leading-relaxed"
+              style={{ color: "rgba(255,255,255,0.38)", fontFamily: "var(--font-label)", fontSize: "0.95rem", maxWidth: "44ch" }}
+            >
+              Premium design alone does not guarantee a good outcome. Execution discipline does.
+              Understanding where projects fail is the first step to ensuring yours does not.
+            </p>
+          </motion.div>
+
+          {/* Two-column grid */}
+          <motion.div variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-px" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+
+            {/* Left — Problems */}
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col"
+              style={{ background: "rgba(255,255,255,0.015)" }}
+            >
+              {/* Column header */}
+              <div
+                className="flex items-center gap-4 px-8 lg:px-10 py-7"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+              >
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(200,120,100,0.55)" }} />
+                <span
+                  className="uppercase tracking-[0.22em] text-xs"
+                  style={{ color: "rgba(220,140,120,0.65)", fontFamily: "var(--font-label)" }}
+                >
+                  Where most projects break down
+                </span>
+              </div>
+
+              {/* Items */}
+              <div className="flex flex-col divide-y" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
+                {PROBLEMS.map((p) => (
+                  <div key={p.n} className="flex gap-6 px-8 lg:px-10 py-7">
+                    <span
+                      className="flex-shrink-0 mt-0.5"
+                      style={{
+                        fontFamily: "var(--font-label)",
+                        fontSize: "0.58rem",
+                        letterSpacing: "0.14em",
+                        color: "rgba(200,120,100,0.4)",
+                      }}
+                    >
+                      {p.n}
+                    </span>
+                    <div className="flex flex-col gap-2">
+                      <span
+                        className="font-light"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+                          color: "rgba(255,255,255,0.62)",
+                        }}
+                      >
+                        {p.label}
+                      </span>
+                      <span
+                        className="leading-relaxed"
+                        style={{
+                          fontFamily: "var(--font-label)",
+                          fontSize: "0.8rem",
+                          color: "rgba(255,255,255,0.28)",
+                        }}
+                      >
+                        {p.context}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Right — Solutions */}
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col"
+              style={{ background: "rgba(216,189,125,0.02)" }}
+            >
+              {/* Column header */}
+              <div
+                className="flex items-center gap-4 px-8 lg:px-10 py-7"
+                style={{ borderBottom: "1px solid rgba(216,189,125,0.1)" }}
+              >
+                <div className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--gold)" }} />
+                <span
+                  className="uppercase tracking-[0.22em] text-xs"
+                  style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}
+                >
+                  The JK Interiors approach
+                </span>
+              </div>
+
+              {/* Items */}
+              <div className="flex flex-col divide-y" style={{ borderColor: "rgba(216,189,125,0.06)" }}>
+                {SOLUTIONS.map((s) => (
+                  <div key={s.n} className="flex gap-6 px-8 lg:px-10 py-7">
+                    <span
+                      className="flex-shrink-0 mt-0.5"
+                      style={{
+                        fontFamily: "var(--font-label)",
+                        fontSize: "0.58rem",
+                        letterSpacing: "0.14em",
+                        color: "rgba(216,189,125,0.45)",
+                      }}
+                    >
+                      {s.n}
+                    </span>
+                    <div className="flex flex-col gap-2">
+                      <span
+                        className="font-light"
+                        style={{
+                          fontFamily: "var(--font-display)",
+                          fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+                          color: "rgba(255,255,255,0.85)",
+                        }}
+                      >
+                        {s.label}
+                      </span>
+                      <span
+                        className="leading-relaxed"
+                        style={{
+                          fontFamily: "var(--font-label)",
+                          fontSize: "0.8rem",
+                          color: "rgba(255,255,255,0.38)",
+                        }}
+                      >
+                        {s.context}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+          </motion.div>
+
+          {/* Bottom note */}
+          <motion.div variants={fadeUp} className="mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-10">
+            <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.05)" }} />
+            <p
+              className="flex-shrink-0 text-xs uppercase tracking-[0.18em] text-center"
+              style={{ color: "rgba(255,255,255,0.22)", fontFamily: "var(--font-label)" }}
+            >
+              Every JK Interiors project is structured to eliminate each of these failure points
+            </p>
+            <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.05)" }} />
+          </motion.div>
+
         </motion.div>
       </div>
     </section>
@@ -317,15 +581,25 @@ function StudioTeaserSection() {
         </motion.div>
 
         {/* Copy */}
-        <motion.div variants={fadeUp} className="order-1 lg:order-2 flex flex-col justify-center gap-8 px-8 py-16 lg:px-14 xl:px-20" style={{ background: "#070707" }}>
+        <motion.div variants={fadeUp} className="order-1 lg:order-2 flex flex-col justify-center gap-8 px-8 py-16 lg:px-14 xl:px-20" style={{ background: "#141210" }}>
           <SectionHeader
             kicker="About JK Interiors"
-            heading={<>Designing <em style={{ color: "var(--gold-soft)" }}>experiences,</em> not just rooms.</>}
+            heading={<>Thoughtful interiors backed by <em style={{ color: "var(--gold-soft)" }}>disciplined execution.</em></>}
           />
-          <p className="leading-relaxed -mt-6" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
-            A Hyderabad-based studio working around the way people move, cook, gather, rest, and store the things
-            that matter. Every decision balances function, livability, materials, and disciplined execution.
-          </p>
+          <div className="flex flex-col gap-4 -mt-6">
+            <p className="leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
+              JK Interiors is a Hyderabad-based turnkey interior studio creating premium residential, commercial,
+              and hospitality spaces through thoughtful planning and precise execution.
+            </p>
+            <p className="leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
+              We design around how people move, cook, gather, rest, and live every day — balancing aesthetics
+              with functionality, storage, material quality, and long-term usability.
+            </p>
+            <p className="leading-relaxed" style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)", fontSize: "0.97rem" }}>
+              From concept to handover, every project is managed through a structured process focused on
+              clarity, coordination, and lasting quality.
+            </p>
+          </div>
           <div className="flex gap-4 flex-wrap">
             <Link href="/about" className="jk-primary-btn" style={{ minWidth: "auto", padding: "0 28px" }}>About the studio</Link>
             <Link href="/philosophy" className="jk-secondary-btn" style={{ minWidth: "auto", padding: "0 28px" }}>Our philosophy</Link>
@@ -350,7 +624,7 @@ function CtaSection() {
   return (
     <section
       className="relative overflow-hidden py-28 lg:py-40"
-      style={{ background: "linear-gradient(135deg,#0d0b08 0%,#0f0e0b 50%,#070707 100%)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
+      style={{ background: "linear-gradient(135deg,#1a1715 0%,#1c1a16 50%,#141210 100%)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
     >
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle,rgba(216,189,125,0.07) 0%,transparent 70%)" }} />
       <div className="absolute -bottom-32 -left-32 w-[400px] h-[400px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle,rgba(216,189,125,0.04) 0%,transparent 70%)" }} />
@@ -394,6 +668,7 @@ export default function LandingSections() {
       <ServicesSection />
       <GalleryPreviewSection />
       <TestimonialsSection />
+      <WhyProjectsGoWrongSection />
       <StudioTeaserSection />
       <CtaSection />
       <SiteFooter />

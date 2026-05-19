@@ -116,8 +116,8 @@ function HeroSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070707] via-[#070707]/50 to-[#070707]/10" />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#070707]/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#141210] via-[#141210]/50 to-[#141210]/10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#141210]/60 to-transparent" />
       </motion.div>
 
       <motion.div
@@ -283,14 +283,14 @@ function StudioStorySection() {
             className="object-cover"
           />
           {/* Subtle dark edge on right */}
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#070707]/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#141210]/30" />
         </motion.div>
 
         {/* Copy */}
         <motion.div
           variants={fadeUp}
           className="order-1 lg:order-2 flex flex-col justify-center gap-8 px-8 py-16 lg:px-14 xl:px-20"
-          style={{ background: "#070707" }}
+          style={{ background: "#141210" }}
         >
           <div className="flex items-center gap-4">
             <div className="h-px w-12" style={{ background: "var(--gold)" }} />
@@ -401,7 +401,7 @@ function ImageQuoteSection() {
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-[#070707]/65" />
+        <div className="absolute inset-0 bg-[#141210]/65" />
       </motion.div>
 
       <div className="relative z-10 flex items-center justify-center min-h-[60vh] px-6 py-24">
@@ -535,7 +535,7 @@ function HowWeWorkSection() {
   const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#070707" }}>
+    <section className="py-24 lg:py-36" style={{ background: "#141210" }}>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
@@ -589,7 +589,7 @@ function TestimonialsSection() {
     <section
       className="py-24 lg:py-36"
       style={{
-        background: "linear-gradient(180deg, #0a0908 0%, #070707 100%)",
+        background: "linear-gradient(180deg, #1a1715 0%, #141210 100%)",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -725,7 +725,7 @@ function ValuesSection() {
     <section
       className="py-24 lg:py-36"
       style={{
-        background: "#070707",
+        background: "#141210",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -799,7 +799,7 @@ function CtaSection() {
     <section
       className="relative overflow-hidden py-28 lg:py-40"
       style={{
-        background: "linear-gradient(135deg, #0d0b08 0%, #0f0e0b 50%, #070707 100%)",
+        background: "linear-gradient(135deg, #1a1715 0%, #1c1a16 50%, #141210 100%)",
         borderTop: "1px solid rgba(255,255,255,0.07)",
       }}
     >
@@ -868,7 +868,7 @@ function CtaSection() {
 
 export default function AboutPage() {
   return (
-    <main style={{ background: "#070707" }}>
+    <main style={{ background: "#141210" }}>
       <SiteHeader />
       <HeroSection />
       <StatsSection />

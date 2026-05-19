@@ -3,40 +3,45 @@ import { NextResponse } from "next/server";
 export async function POST(request: Request) {
   const body = await request.json();
 
-  const payload = {
-    submittedAt: new Date().toLocaleString("en-IN", { timeZone: "Asia/Kolkata" }),
-    source: String(body.source ?? "contact-page"),
-    name: String(body.name ?? ""),
-    phone: String(body.phone ?? ""),
-    email: String(body.email ?? "—"),
-    projectType: String(body.projectType ?? "—"),
-    budget: String(body.budget ?? "—"),
-    message: String(body.message ?? "—"),
-  };
+  const name = String(body.name ?? "").trim();
+  const phone = String(body.phone ?? "").trim();
 
-  if (!payload.name || !payload.phone) {
+  if (!name || !phone) {
     return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
   }
 
-  const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
-  if (!webhookUrl) {
-    // No webhook configured — still return success so the UI works locally
-    console.warn("GOOGLE_SHEETS_WEBHOOK_URL not set");
+  const crmUrl = process.env.CRM_URL;
+  const crmApiKey = process.env.CRM_API_KEY;
+
+  if (!crmUrl || !crmApiKey) {
+    console.warn("CRM_URL or CRM_API_KEY not set");
     return NextResponse.json({ ok: true });
   }
 
   try {
-    const res = await fetch(webhookUrl, {
+    const res = await fetch(`${crmUrl}/api/public/lead`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": crmApiKey,
+      },
+      body: JSON.stringify({
+        name,
+        phone,
+        email: String(body.email ?? "").trim(),
+        project: String(body.projectType ?? "").trim(),
+        budget: String(body.budget ?? "").trim(),
+        message: String(body.message ?? "").trim(),
+        source: "Website",
+      }),
     });
+
     if (!res.ok) {
-      console.error("Sheets webhook error", res.status, await res.text());
+      console.error("CRM error", res.status, await res.text());
       return NextResponse.json({ error: "Unable to save enquiry" }, { status: 502 });
     }
   } catch (err) {
-    console.error("Sheets webhook fetch failed", err);
+    console.error("CRM fetch failed", err);
     return NextResponse.json({ error: "Network error" }, { status: 502 });
   }
 

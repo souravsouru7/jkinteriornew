@@ -79,7 +79,7 @@ export default function FloatingContact() {
               >
                 <span
                   style={{
-                    background: "#0a0908",
+                    background: "#1a1715",
                     border: `1px solid ${action.border}`,
                     color: action.color,
                     fontFamily: "var(--font-label)",
@@ -94,7 +94,7 @@ export default function FloatingContact() {
                 </span>
                 <span
                   style={{
-                    background: "#0a0908",
+                    background: "#1a1715",
                     border: `1px solid rgba(255,255,255,0.07)`,
                     borderTop: "none",
                     color: "rgba(255,255,255,0.38)",

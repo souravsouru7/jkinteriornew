@@ -298,6 +298,30 @@ export default function LeadPopup() {
                         </div>
                       </div>
 
+                      {/* Description */}
+                      <div className="flex flex-col gap-2">
+                        <label
+                          htmlFor="popup-message"
+                          className="uppercase tracking-[0.14em]"
+                          style={{ color: "rgba(255,255,255,0.38)", fontFamily: "var(--font-label)", fontSize: "0.65rem" }}
+                        >
+                          Description
+                        </label>
+                        <textarea
+                          id="popup-message"
+                          name="message"
+                          rows={3}
+                          placeholder="Tell us about your space, timeline, or any specific requirements..."
+                          style={{
+                            ...inputStyle,
+                            resize: "none",
+                            minHeight: "80px",
+                          }}
+                          onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(216,189,125,0.55)")}
+                          onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
+                        />
+                      </div>
+
                       {/* Submit */}
                       <button
                         type="submit"

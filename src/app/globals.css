@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --color-jk-dark: #070707;
+  --color-jk-dark: #141210;
   --color-jk-gold: #d8bd7d;
   --color-jk-gold-soft: #f1dfb6;
   --font-sans: "Inter", "Segoe UI", Arial, sans-serif;
@@ -10,7 +10,7 @@
 }
 
 :root {
-  --background: #070707;
+  --background: #141210;
   --foreground: #ffffff;
   --gold: #d8bd7d;
   --gold-soft: #f1dfb6;
@@ -763,7 +763,7 @@ a {
   color: #ffffff;
   background:
     radial-gradient(circle at 72% 18%, rgba(216, 189, 125, 0.14), transparent 34%),
-    #070707;
+    #141210;
 }
 
 .jk-testimonial-top {

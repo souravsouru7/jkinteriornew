@@ -14,9 +14,11 @@ const NAV_LINKS = [
 ];
 
 const METRICS = [
-  { value: "50+", label: "Projects delivered" },
-  { value: "4.5+", label: "Years of practice" },
-  { value: "1 yr", label: "Warranty support" },
+  { value: "50+", label: "Projects Delivered" },
+  { value: "4.5+", label: "Years of Experience" },
+  { value: "45–60", label: "Day Timelines" },
+  { value: "1 yr", label: "Free Maintenance" },
+  { value: "10 yr", label: "Material Warranty" },
 ];
 
 const TYPED_LINES = [
@@ -80,13 +82,13 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="jk-hero relative isolate min-h-screen overflow-hidden bg-[#070707] text-white">
+    <section className="jk-hero relative isolate min-h-screen overflow-hidden bg-[#141210] text-white">
       {/* ── Video loading screen ── */}
       <AnimatePresence>
         {!videoReady && (
           <motion.div
             className="fixed inset-0 z-[999] flex flex-col items-center justify-center gap-8"
-            style={{ background: "#070707" }}
+            style={{ background: "#141210" }}
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.7, ease: "easeInOut" }}
@@ -136,8 +138,8 @@ export default function HeroSection() {
         >
           <source src={HERO_VIDEO_SRC} type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,#070707_0%,rgba(7,7,7,0.97)_24%,rgba(7,7,7,0.72)_55%,rgba(7,7,7,0.18)_100%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,7,7,0.75)_0%,rgba(7,7,7,0.22)_46%,#070707_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,#1a1715_0%,rgba(26,23,21,0.86)_24%,rgba(26,23,21,0.48)_55%,rgba(26,23,21,0.08)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,18,16,0.50)_0%,rgba(20,18,16,0.08)_46%,#141210_100%)]" />
       </div>
 
       {/* Nav */}
@@ -196,8 +198,8 @@ export default function HeroSection() {
               fontSize: "clamp(3rem, 7vw, 6.8rem)",
             }}
           >
-            Luxury interiors delivered with{" "}
-            <em style={{ color: "var(--gold-soft)" }}>precision.</em>
+            Luxury Interiors.{" "}
+            <em style={{ color: "var(--gold-soft)" }}>Executed Without Chaos.</em>
           </motion.h1>
 
           {/* Typed line */}
@@ -238,8 +240,8 @@ export default function HeroSection() {
               fontSize: "clamp(0.9rem, 1.3vw, 1.05rem)",
             }}
           >
-            We design and execute refined residential, commercial, and hospitality interiors
-            with controlled budgets, strong detailing, and a premium client experience.
+            Premium turnkey interiors planned with clarity, executed with discipline,
+            and built around how people actually live.
           </motion.p>
 
           {/* CTAs */}
@@ -302,9 +304,9 @@ export default function HeroSection() {
           transition={{ duration: 1, delay: 0.8, ease: "easeOut" }}
           className="hidden lg:flex flex-col gap-6 p-8"
           style={{
-            border: "1px solid rgba(216,189,125,0.18)",
-            background: "rgba(7,7,7,0.6)",
-            backdropFilter: "blur(12px)",
+            border: "1px solid rgba(216,189,125,0.22)",
+            background: "rgba(26,23,21,0.72)",
+            backdropFilter: "blur(16px)",
           }}
           aria-label="Studio approach"
         >
@@ -334,8 +336,9 @@ export default function HeroSection() {
             className="leading-relaxed text-sm"
             style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)" }}
           >
-            From first moodboard to final handover, every layer is planned, costed,
-            and site-aligned.
+            Every project moves through a clear system — from planning and costing to
+            execution and final handover. We balance aesthetics, functionality, storage,
+            materials, and site precision to create homes that feel refined for years.
           </p>
 
           <div className="flex flex-col gap-3">
