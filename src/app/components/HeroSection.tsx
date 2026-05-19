@@ -260,16 +260,16 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 1.35 }}
-            className="mt-10 flex items-center gap-8 border-t pt-8"
+            className="mt-10 flex flex-wrap gap-x-6 gap-y-5 sm:gap-x-8 border-t pt-8"
             style={{ borderColor: "rgba(255,255,255,0.08)" }}
           >
-            {METRICS.map((m, i) => (
+            {METRICS.map((m) => (
               <div key={m.label} className="flex flex-col gap-1">
                 <span
                   className="leading-none"
                   style={{
                     fontFamily: "var(--font-display)",
-                    fontSize: "clamp(1.6rem, 2.5vw, 2.2rem)",
+                    fontSize: "clamp(1.4rem, 2.5vw, 2.2rem)",
                     color: "var(--gold-soft)",
                     fontWeight: 300,
                   }}
@@ -280,18 +280,12 @@ export default function HeroSection() {
                   className="uppercase tracking-[0.12em]"
                   style={{
                     fontFamily: "var(--font-label)",
-                    fontSize: "0.6rem",
+                    fontSize: "0.58rem",
                     color: "rgba(255,255,255,0.35)",
                   }}
                 >
                   {m.label}
                 </span>
-                {i < METRICS.length - 1 && (
-                  <div
-                    className="absolute"
-                    style={{ display: "none" }}
-                  />
-                )}
               </div>
             ))}
           </motion.div>

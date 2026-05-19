@@ -125,7 +125,7 @@ const stagger: Variants = {
 
 function SectionHeader({ kicker, heading, sub }: { kicker: string; heading: React.ReactNode; sub?: string }) {
   return (
-    <div className="flex flex-col gap-5 mb-14 lg:mb-18">
+    <div className="flex flex-col gap-4 mb-10 lg:mb-14">
       <div className="flex items-center gap-4">
         <div className="h-px w-12" style={{ background: "var(--gold)" }} />
         <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>
@@ -151,8 +151,8 @@ function ServicesSection() {
   const inView = useInView(ref, { once: true, margin: "-6%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-14 sm:py-20 lg:py-32" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp}>
             <SectionHeader
@@ -168,8 +168,8 @@ function ServicesSection() {
               <motion.div
                 key={s.id}
                 variants={fadeUp}
-                className={`group relative overflow-hidden ${s.span === "tall" ? "row-span-2" : s.span === "wide" ? "col-span-2" : ""}`}
-                style={{ minHeight: s.span === "tall" ? "520px" : "260px" }}
+                className={`group relative overflow-hidden ${s.span === "tall" ? "xl:row-span-2" : s.span === "wide" ? "xl:col-span-2" : ""}`}
+                style={{ minHeight: s.span === "tall" ? "420px" : "280px" }}
               >
                 <Image src={s.image} alt={s.title} fill sizes="(min-width:1280px) 28vw, (min-width:768px) 45vw, 100vw" className="object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]" />
                 <div className="absolute inset-0 transition-opacity duration-500" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.9) 0%, rgba(7,7,7,0.3) 55%, transparent 100%)", opacity: 0.85 }} />
@@ -185,7 +185,7 @@ function ServicesSection() {
                   <h3 className="text-white font-light" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1.1rem, 2vw, 1.5rem)" }}>
                     {s.title}
                   </h3>
-                  <p className="text-xs leading-relaxed opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-label)" }}>
+                  <p className="text-xs leading-relaxed opacity-80 sm:opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ color: "rgba(255,255,255,0.55)", fontFamily: "var(--font-label)" }}>
                     {s.summary}
                   </p>
                 </div>
@@ -223,8 +223,8 @@ function GalleryPreviewSection() {
   const inView = useInView(ref, { once: true, margin: "-6%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-14 sm:py-20 lg:py-32" style={{ background: "#141210", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 gap-6 flex-wrap">
             <SectionHeader
@@ -238,7 +238,7 @@ function GalleryPreviewSection() {
 
           <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {GALLERY_PREVIEW.map((item) => (
-              <motion.div key={item.title} variants={fadeUp} className="group relative overflow-hidden" style={{ minHeight: "360px" }}>
+              <motion.div key={item.title} variants={fadeUp} className="group relative overflow-hidden" style={{ minHeight: "300px" }}>
                 <Image src={item.image} alt={item.title} fill sizes="(min-width:1024px) 33vw, (min-width:640px) 50vw, 100vw" className="object-cover transition-transform duration-[1.1s] ease-out group-hover:scale-[1.05]" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(7,7,7,0.85) 0%, transparent 55%)" }} />
                 <div className="absolute bottom-0 left-0 right-0 p-5 flex flex-col gap-2">
@@ -262,8 +262,8 @@ function TestimonialsSection() {
   const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "linear-gradient(180deg,#1a1715 0%,#141210 100%)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section className="py-14 sm:py-20 lg:py-32" style={{ background: "linear-gradient(180deg,#1a1715 0%,#141210 100%)", borderBottom: "1px solid rgba(255,255,255,0.07)" }}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
           <motion.div variants={fadeUp} className="flex items-end justify-between mb-14 flex-wrap gap-6">
             <SectionHeader
@@ -278,7 +278,7 @@ function TestimonialsSection() {
 
           <motion.div variants={stagger} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 gap-5">
             {TESTIMONIALS.map((t) => (
-              <motion.div key={t.name} variants={fadeUp} className="flex flex-col gap-6 p-8" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}>
+              <motion.div key={t.name} variants={fadeUp} className="flex flex-col gap-5 p-5 sm:p-7" style={{ border: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)" }}>
                 <span className="leading-none select-none" style={{ fontFamily: "var(--font-display)", fontSize: "3.5rem", color: "var(--gold)", opacity: 0.35, lineHeight: 1 }}>"</span>
                 <blockquote className="font-light italic leading-relaxed flex-1" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(1rem, 1.4vw, 1.12rem)", color: "rgba(255,255,255,0.72)" }}>
                   {t.quote}
@@ -371,7 +371,7 @@ function WhyProjectsGoWrongSection() {
 
   return (
     <section
-      className="relative overflow-hidden py-28 lg:py-44"
+      className="relative overflow-hidden py-16 sm:py-24 lg:py-40"
       style={{
         background: "linear-gradient(180deg, #1a1715 0%, #141210 60%, #1a1715 100%)",
         borderBottom: "1px solid rgba(255,255,255,0.07)",
@@ -385,11 +385,11 @@ function WhyProjectsGoWrongSection() {
         }}
       />
 
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-12">
         <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger}>
 
           {/* Header — centred */}
-          <motion.div variants={fadeUp} className="max-w-2xl mx-auto text-center mb-20 lg:mb-28 flex flex-col items-center gap-5">
+          <motion.div variants={fadeUp} className="max-w-2xl mx-auto text-center mb-12 sm:mb-16 lg:mb-24 flex flex-col items-center gap-5">
             <div className="flex items-center gap-4">
               <div className="h-px w-10" style={{ background: "var(--gold)" }} />
               <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>
@@ -414,18 +414,18 @@ function WhyProjectsGoWrongSection() {
           </motion.div>
 
           {/* Two-column grid */}
-          <motion.div variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 gap-px" style={{ border: "1px solid rgba(255,255,255,0.06)" }}>
+          <motion.div variants={stagger} className="grid grid-cols-1 lg:grid-cols-2" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
 
             {/* Left — Problems */}
             <motion.div
               variants={fadeUp}
               className="flex flex-col"
-              style={{ background: "rgba(255,255,255,0.015)" }}
+              style={{ background: "rgba(255,255,255,0.015)", borderBottom: "1px solid rgba(255,255,255,0.08)" }}
             >
               {/* Column header */}
               <div
-                className="flex items-center gap-4 px-8 lg:px-10 py-7"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                className="flex items-center gap-4 px-5 sm:px-8 lg:px-10 py-5 sm:py-7"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: "rgba(200,120,100,0.55)" }} />
                 <span
@@ -437,9 +437,9 @@ function WhyProjectsGoWrongSection() {
               </div>
 
               {/* Items */}
-              <div className="flex flex-col divide-y" style={{ borderColor: "rgba(255,255,255,0.04)" }}>
-                {PROBLEMS.map((p) => (
-                  <div key={p.n} className="flex gap-6 px-8 lg:px-10 py-7">
+              <div className="flex flex-col">
+                {PROBLEMS.map((p, i) => (
+                  <div key={p.n} className="flex gap-4 sm:gap-6 px-5 sm:px-8 lg:px-10 py-5 sm:py-7" style={i > 0 ? { borderTop: "1px solid rgba(255,255,255,0.05)" } : undefined}>
                     <span
                       className="flex-shrink-0 mt-0.5"
                       style={{
@@ -486,7 +486,7 @@ function WhyProjectsGoWrongSection() {
             >
               {/* Column header */}
               <div
-                className="flex items-center gap-4 px-8 lg:px-10 py-7"
+                className="flex items-center gap-4 px-5 sm:px-8 lg:px-10 py-5 sm:py-7"
                 style={{ borderBottom: "1px solid rgba(216,189,125,0.1)" }}
               >
                 <div className="w-1.5 h-1.5 rounded-full" style={{ background: "var(--gold)" }} />
@@ -499,9 +499,9 @@ function WhyProjectsGoWrongSection() {
               </div>
 
               {/* Items */}
-              <div className="flex flex-col divide-y" style={{ borderColor: "rgba(216,189,125,0.06)" }}>
-                {SOLUTIONS.map((s) => (
-                  <div key={s.n} className="flex gap-6 px-8 lg:px-10 py-7">
+              <div className="flex flex-col">
+                {SOLUTIONS.map((s, i) => (
+                  <div key={s.n} className="flex gap-4 sm:gap-6 px-5 sm:px-8 lg:px-10 py-5 sm:py-7" style={i > 0 ? { borderTop: "1px solid rgba(216,189,125,0.07)" } : undefined}>
                     <span
                       className="flex-shrink-0 mt-0.5"
                       style={{
@@ -543,11 +543,11 @@ function WhyProjectsGoWrongSection() {
           </motion.div>
 
           {/* Bottom note */}
-          <motion.div variants={fadeUp} className="mt-14 flex flex-col sm:flex-row items-start sm:items-center gap-5 sm:gap-10">
+          <motion.div variants={fadeUp} className="mt-10 sm:mt-14 flex items-center gap-6 sm:gap-10">
             <div className="h-px flex-1" style={{ background: "rgba(255,255,255,0.05)" }} />
             <p
-              className="flex-shrink-0 text-xs uppercase tracking-[0.18em] text-center"
-              style={{ color: "rgba(255,255,255,0.22)", fontFamily: "var(--font-label)" }}
+              className="flex-shrink-0 text-xs uppercase tracking-[0.16em] text-center"
+              style={{ color: "rgba(255,255,255,0.22)", fontFamily: "var(--font-label)", maxWidth: "38ch" }}
             >
               Every JK Interiors project is structured to eliminate each of these failure points
             </p>
@@ -581,7 +581,7 @@ function StudioTeaserSection() {
         </motion.div>
 
         {/* Copy */}
-        <motion.div variants={fadeUp} className="order-1 lg:order-2 flex flex-col justify-center gap-8 px-8 py-16 lg:px-14 xl:px-20" style={{ background: "#141210" }}>
+        <motion.div variants={fadeUp} className="order-1 lg:order-2 flex flex-col justify-center gap-6 sm:gap-8 px-5 sm:px-8 py-12 sm:py-16 lg:px-14 xl:px-20" style={{ background: "#141210" }}>
           <SectionHeader
             kicker="About JK Interiors"
             heading={<>Thoughtful interiors backed by <em style={{ color: "var(--gold-soft)" }}>disciplined execution.</em></>}
@@ -623,7 +623,7 @@ function CtaSection() {
 
   return (
     <section
-      className="relative overflow-hidden py-28 lg:py-40"
+      className="relative overflow-hidden py-16 sm:py-24 lg:py-36"
       style={{ background: "linear-gradient(135deg,#1a1715 0%,#1c1a16 50%,#141210 100%)", borderTop: "1px solid rgba(255,255,255,0.07)" }}
     >
       <div className="absolute -top-40 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle,rgba(216,189,125,0.07) 0%,transparent 70%)" }} />
