@@ -13,42 +13,42 @@ const SERVICES = [
     id: "01",
     title: "Residential Interiors",
     summary: "Functional, refined living spaces designed around movement, storage, and everyday comfort.",
-    image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/home.jpg",
     span: "tall",
   },
   {
     id: "02",
     title: "Modular Kitchens",
     summary: "Efficient kitchen systems planned for workflow, durability, and seamless daily use.",
-    image: "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/kitchen.jpg",
     span: "wide",
   },
   {
     id: "03",
     title: "Wardrobes & Storage",
     summary: "Smart storage layouts designed to maximize usability without overwhelming the space.",
-    image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/wb-interior.jpg",
     span: "square",
   },
   {
     id: "04",
     title: "False Ceilings & Lighting",
     summary: "Ceiling and lighting systems designed to improve mood, depth, and spatial balance.",
-    image: "https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/living-room.jpg",
     span: "square",
   },
   {
     id: "05",
     title: "Turnkey Interiors",
     summary: "One accountable team managing design, materials, execution, timelines, and final handover.",
-    image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/banner-image.jpg",
     span: "wide",
   },
   {
     id: "06",
     title: "Renovation & Remodeling",
     summary: "Thoughtful upgrades that modernize spaces while maintaining budget control and structural clarity.",
-    image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1100&q=88",
+    image: "/images/about-us.jpg",
     span: "tall",
   },
 ];
@@ -58,19 +58,19 @@ const GALLERY_PREVIEW = [
     title: "Quiet Villa Living",
     subtitle: "4BHK Villa · 60-Day Turnkey Execution",
     desc: "Designed around open movement, layered lighting, and concealed storage to maintain visual calm across the home.",
-    image: "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1200&q=90",
+    image: "/images/home.jpg",
   },
   {
-    title: "Executive Workspace",
-    subtitle: "Commercial Office · HITEC City",
-    desc: "A workspace balancing focus, circulation, and premium material detailing without visual clutter.",
-    image: "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1200&q=90",
+    title: "Modular Kitchen Design",
+    subtitle: "Residential Kitchen · Kondapur",
+    desc: "A workspace balancing storage, workflow, and premium material detailing without visual clutter.",
+    image: "/images/kitchen.jpg",
   },
   {
     title: "Layered Bedroom Styling",
     subtitle: "Residential · Madhapur",
     desc: "Soft textures, integrated lighting, and practical storage systems designed for everyday ease.",
-    image: "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=1200&q=90",
+    image: "/images/wb-interior.jpg",
   },
 ];
 
@@ -571,7 +571,7 @@ function StudioTeaserSection() {
       <motion.div ref={ref} initial="hidden" animate={inView ? "show" : "hidden"} variants={stagger} className="grid grid-cols-1 lg:grid-cols-2 min-h-[65vh]">
         {/* Image */}
         <motion.div variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.85 } } }} className="relative min-h-[50vw] lg:min-h-0 order-2 lg:order-1">
-          <Image src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=90" alt="JK Interiors studio" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
+          <Image src="/images/about-us.jpg" alt="JK Interiors studio" fill sizes="(min-width:1024px) 50vw, 100vw" className="object-cover" />
           <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent, rgba(7,7,7,0.25))" }} />
           {/* Floating badge */}
           <div className="absolute bottom-6 left-6 flex flex-col gap-1 px-5 py-4" style={{ background: "rgba(7,7,7,0.78)", backdropFilter: "blur(10px)", border: "1px solid rgba(216,189,125,0.18)" }}>

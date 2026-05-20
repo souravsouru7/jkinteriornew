@@ -48,6 +48,21 @@ a {
   color: #ffffff;
 }
 
+@keyframes jk-marquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes jk-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.85); }
+  50%       { opacity: 1;   transform: scale(1.15); }
+}
+
+/* Extra bottom padding on mobile so sticky bar doesn't cover content */
+@media (max-width: 639px) {
+  body { padding-bottom: 60px; }
+}
+
 @keyframes revealUp {
   from {
     opacity: 0;
@@ -853,7 +868,7 @@ a {
   color: #ffffff;
   background:
     linear-gradient(90deg, rgba(7, 7, 7, 0.88), rgba(7, 7, 7, 0.18)),
-    url("https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=88") center/cover;
+    url("/images/about-us.jpg") center/cover;
 }
 
 .jk-about-copy {
@@ -1827,11 +1842,15 @@ a {
 }
 
 .jk-site-header {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 38px; /* sits just below the 38px announcement strip */
   right: 0;
   left: 0;
   z-index: 50;
+  background: rgba(10, 9, 7, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(176, 137, 104, 0.12);
 }
 
 .jk-site-nav {

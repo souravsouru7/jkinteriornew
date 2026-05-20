@@ -9,16 +9,87 @@ import SiteFooter from "../components/SiteFooter";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
+/* ── SVG Icons ── */
+function IconHouse() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M6 20L24 5l18 15" />
+      <path d="M10 17v22h10V27h8v12h10V17" />
+      <rect x="19" y="35" width="10" height="4" rx="0.5" />
+    </svg>
+  );
+}
+function IconBuilding() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="8" y="6" width="22" height="36" rx="1" />
+      <path d="M30 18h10v24H30" />
+      <line x1="14" y1="13" x2="20" y2="13" />
+      <line x1="14" y1="20" x2="20" y2="20" />
+      <line x1="14" y1="27" x2="20" y2="27" />
+      <line x1="34" y1="25" x2="38" y2="25" />
+      <line x1="34" y1="32" x2="38" y2="32" />
+      <rect x="16" y="34" width="8" height="8" rx="0.5" />
+    </svg>
+  );
+}
+function IconKitchen() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="6" y="10" width="36" height="28" rx="2" />
+      <line x1="6" y1="22" x2="42" y2="22" />
+      <circle cx="16" cy="16" r="3" />
+      <circle cx="32" cy="16" r="3" />
+      <rect x="12" y="26" width="10" height="8" rx="1" />
+      <line x1="26" y1="26" x2="36" y2="26" />
+      <line x1="26" y1="30" x2="36" y2="30" />
+      <line x1="26" y1="34" x2="36" y2="34" />
+    </svg>
+  );
+}
+function IconWardrobe() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="7" y="6" width="34" height="36" rx="1.5" />
+      <line x1="24" y1="6" x2="24" y2="42" />
+      <circle cx="21" cy="24" r="1.5" />
+      <circle cx="27" cy="24" r="1.5" />
+      <line x1="7" y1="38" x2="3" y2="44" />
+      <line x1="41" y1="38" x2="45" y2="44" />
+    </svg>
+  );
+}
+function IconStyling() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M24 6 L28 18 H20 Z" />
+      <line x1="24" y1="18" x2="24" y2="32" />
+      <ellipse cx="24" cy="36" rx="10" ry="4" />
+      <line x1="14" y1="36" x2="10" y2="44" />
+      <line x1="34" y1="36" x2="38" y2="44" />
+      <line x1="14" y1="44" x2="34" y2="44" />
+    </svg>
+  );
+}
+function IconBudget() {
+  return (
+    <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="24" cy="24" r="18" />
+      <path d="M24 10v4M24 34v4" />
+      <path d="M17 17.5c0-2.5 3-4 7-3s6 3 4 5.5-8 3-9 6 2 5.5 7 5 7-3 5-6" />
+    </svg>
+  );
+}
+
 const SERVICES = [
   {
     id: "01",
-    title: "Residential Design",
+    title: "Residential Interiors",
     tagline: "Homes · Apartments · Villas",
     description:
       "We transform raw space into refined living — each room balanced between beauty and the ease of everyday life.",
     features: ["Living rooms", "Bedrooms", "Bathrooms", "Kids' rooms"],
-    image:
-      "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=1400&q=90",
+    Icon: IconHouse,
   },
   {
     id: "02",
@@ -27,8 +98,7 @@ const SERVICES = [
     description:
       "Brand-led spaces that command attention, drive footfall, and communicate your identity through every surface.",
     features: ["Office planning", "Retail layouts", "Hospitality interiors", "Brand-led spaces"],
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=90",
+    Icon: IconBuilding,
   },
   {
     id: "03",
@@ -37,18 +107,16 @@ const SERVICES = [
     description:
       "Where precision engineering meets culinary artistry — kitchens that function with the same effortlessness they inspire.",
     features: ["Custom layouts", "Smart storage", "Premium finishes", "Appliance integration"],
-    image:
-      "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1400&q=90",
+    Icon: IconKitchen,
   },
   {
     id: "04",
-    title: "Customised Furniture",
+    title: "Wardrobes & Storage",
     tagline: "Built-ins · Wardrobes · Seating",
     description:
       "Every piece made to measure — built for your exact space, your exact life, and no one else's.",
-    features: ["Sofas & seating", "Wardrobes", "Tables & desks", "Built-in storage"],
-    image:
-      "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1400&q=90",
+    features: ["Custom wardrobes", "Built-in storage", "Walk-in closets", "Modular shelving"],
+    Icon: IconWardrobe,
   },
   {
     id: "05",
@@ -57,8 +125,7 @@ const SERVICES = [
     description:
       "The finishing layer — where materials, light, and curated objects converge to complete the story of a space.",
     features: ["Decor selection", "Lighting mood", "Colour coordination", "Furniture placement"],
-    image:
-      "https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1400&q=90",
+    Icon: IconStyling,
   },
   {
     id: "06",
@@ -67,8 +134,7 @@ const SERVICES = [
     description:
       "Premium aesthetics don't require unlimited budgets — they require smarter decisions, better sequencing, and the right eye.",
     features: ["Material alternatives", "Space optimisation", "Phased execution", "Focused styling"],
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1400&q=90",
+    Icon: IconBudget,
   },
 ];
 
@@ -146,121 +212,104 @@ function ServiceCard({
   index: number;
 }) {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-8%" });
-  const isEven = index % 2 === 0;
+  const inView = useInView(ref, { once: true, margin: "-6%" });
 
   return (
     <motion.article
       ref={ref}
-      initial="hidden"
-      animate={inView ? "show" : "hidden"}
-      variants={stagger}
-      className="group grid grid-cols-1 lg:grid-cols-2 border-t border-white/[0.07]"
+      initial={{ opacity: 0, y: 32 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.7, delay: (index % 2) * 0.12, ease: "easeOut" }}
+      className="group relative flex flex-col gap-6 p-8 lg:p-10 border-b border-r"
+      style={{
+        borderColor: "rgba(255,255,255,0.07)",
+        background: "transparent",
+        cursor: "default",
+        transition: "background 0.35s ease",
+      }}
+      whileHover={{ backgroundColor: "rgba(216,189,125,0.04)" }}
     >
-      {/* ── Image side ── */}
-      <motion.div
-        variants={fadeIn}
-        className={`relative overflow-hidden min-h-[56vw] lg:min-h-[520px] ${
-          !isEven ? "lg:order-2" : ""
-        }`}
-      >
-        <Image
-          src={service.image}
-          alt={service.title}
-          fill
-          sizes="(min-width:1024px) 50vw, 100vw"
-          className="object-cover transition-transform duration-[1.2s] ease-out will-change-transform group-hover:scale-[1.04]"
-        />
-        {/* Gradient scrim */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/50" />
-        {/* Ghost number */}
-        <span
-          className="absolute bottom-4 right-6 select-none pointer-events-none leading-none text-white/[0.06]"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(6rem, 14vw, 11rem)",
-            fontWeight: 600,
-          }}
-        >
-          {service.id}
-        </span>
-      </motion.div>
+      {/* Gold top accent line — appears on hover */}
+      <div
+        className="absolute top-0 left-0 right-0 h-px origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+        style={{ background: "linear-gradient(90deg, var(--gold), transparent)" }}
+      />
 
-      {/* ── Content side ── */}
-      <motion.div
-        variants={fadeUp}
-        className={`flex flex-col justify-center gap-8 px-8 py-14 lg:px-14 xl:px-20 xl:py-20 bg-[#141210] ${
-          !isEven ? "lg:order-1" : ""
-        }`}
+      {/* Icon */}
+      <div
+        className="flex-shrink-0 w-14 h-14 flex items-center justify-center"
+        style={{
+          color: "var(--gold)",
+          border: "1px solid rgba(216,189,125,0.25)",
+          background: "rgba(216,189,125,0.05)",
+        }}
       >
-        {/* Meta row */}
-        <div
-          className="flex items-center gap-3"
-          style={{ fontFamily: "var(--font-label)" }}
-        >
-          <span style={{ color: "var(--gold)", fontSize: "0.7rem", letterSpacing: "0.22em" }}>
-            {service.id}
-          </span>
-          <div
-            className="h-px w-10 flex-shrink-0"
-            style={{ background: "var(--gold)", opacity: 0.4 }}
-          />
-          <span
-            className="uppercase"
+        <service.Icon />
+      </div>
+
+      {/* Step label */}
+      <span
+        style={{
+          color: "rgba(255,255,255,0.22)",
+          fontFamily: "var(--font-label)",
+          fontSize: "0.6rem",
+          letterSpacing: "0.22em",
+          textTransform: "uppercase",
+        }}
+      >
+        {service.id}
+      </span>
+
+      {/* Title */}
+      <h2
+        className="font-semibold text-white leading-tight"
+        style={{
+          fontFamily: "var(--font-label)",
+          fontSize: "clamp(1rem, 1.4vw, 1.15rem)",
+          letterSpacing: "0.02em",
+          marginTop: "-8px",
+        }}
+      >
+        {service.title}
+      </h2>
+
+      {/* Gold rule */}
+      <div
+        className="h-px w-10 group-hover:w-16 transition-all duration-500"
+        style={{ background: "linear-gradient(90deg, var(--gold), transparent)" }}
+      />
+
+      {/* Description */}
+      <p
+        className="leading-relaxed"
+        style={{
+          color: "rgba(255,255,255,0.48)",
+          fontFamily: "var(--font-label)",
+          fontSize: "0.88rem",
+          lineHeight: 1.75,
+        }}
+      >
+        {service.description}
+      </p>
+
+      {/* Feature pills */}
+      <ul className="flex flex-wrap gap-2 mt-auto pt-2">
+        {service.features.map((f) => (
+          <li
+            key={f}
+            className="text-xs px-3 py-1"
             style={{
+              border: "1px solid rgba(216,189,125,0.18)",
               color: "rgba(255,255,255,0.38)",
+              fontFamily: "var(--font-label)",
+              letterSpacing: "0.06em",
               fontSize: "0.65rem",
-              letterSpacing: "0.16em",
             }}
           >
-            {service.tagline}
-          </span>
-        </div>
-
-        {/* Heading */}
-        <h2
-          className="font-light leading-[1.05] text-white"
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: "clamp(2.2rem, 4vw, 3.6rem)",
-          }}
-        >
-          {service.title}
-        </h2>
-
-        {/* Gold rule */}
-        <motion.div
-          variants={lineGrow}
-          className="h-px w-16 origin-left"
-          style={{ background: "linear-gradient(90deg, var(--gold), transparent)" }}
-        />
-
-        {/* Description */}
-        <p
-          className="leading-relaxed max-w-md"
-          style={{ color: "rgba(255,255,255,0.55)", fontSize: "clamp(0.95rem, 1.4vw, 1.08rem)" }}
-        >
-          {service.description}
-        </p>
-
-        {/* Feature list */}
-        <motion.ul variants={stagger} className="grid grid-cols-2 gap-y-3 gap-x-4">
-          {service.features.map((f) => (
-            <motion.li
-              key={f}
-              variants={fadeUp}
-              className="flex items-center gap-2.5 text-sm"
-              style={{ color: "rgba(255,255,255,0.65)", fontFamily: "var(--font-label)", letterSpacing: "0.04em" }}
-            >
-              <span
-                className="flex-shrink-0 w-1.5 h-1.5 rounded-full"
-                style={{ background: "var(--gold)" }}
-              />
-              {f}
-            </motion.li>
-          ))}
-        </motion.ul>
-      </motion.div>
+            {f}
+          </li>
+        ))}
+      </ul>
     </motion.article>
   );
 }
@@ -362,7 +411,7 @@ function HeroSection() {
       {/* Parallax background */}
       <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=2000&q=90"
+          src="/images/banner-image.jpg"
           alt="JK Interiors — luxury interior design"
           fill
           priority
@@ -517,51 +566,282 @@ function StatsBar() {
   );
 }
 
-// ─── Process Section ─────────────────────────────────────────────────────────
+// ─── Process Section — Snake Path ────────────────────────────────────────────
+
+const STEP_IMAGES = [
+  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80", // Discovery — site visit
+  "https://images.unsplash.com/photo-1503174971373-b1f69850bded?w=400&q=80", // Planning — blueprints
+  "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80", // Design — 3D render
+  "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=400&q=80", // Execution — on-site
+  "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80", // Handover — finished room
+];
+
+/* ViewBox: 1200 × 520.  Snake: 3 rows at y=100, y=280, y=460 */
+const VB_W = 1200;
+const VB_H = 520;
+
+const SNAKE_POS = [
+  { x: 200,  y: 100, above: false },  /* 01 Discovery   */
+  { x: 970,  y: 100, above: false },  /* 02 Planning    */
+  { x: 820,  y: 280, above: true  },  /* 03 Design      */
+  { x: 200,  y: 280, above: true  },  /* 04 Execution   */
+  { x: 430,  y: 460, above: false },  /* 05 Handover    */
+] as const;
 
 function ProcessSection() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const inView = useInView(ref, { once: true, margin: "-8%" });
 
   return (
-    <section className="py-24 lg:py-36" style={{ background: "#141210" }}>
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+    <section
+      ref={ref}
+      className="relative overflow-hidden py-20 lg:py-32"
+      style={{ background: "#1a1714", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+    >
+      {/* Ghost number */}
+      <div
+        aria-hidden
+        className="pointer-events-none select-none absolute right-0 top-1/2 -translate-y-1/2 leading-none"
+        style={{
+          fontFamily: "var(--font-display)",
+          fontSize: "clamp(14rem, 28vw, 22rem)",
+          color: "rgba(255,255,255,0.025)",
+          fontWeight: 300,
+        }}
+      >
+        02
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <motion.div
-          ref={ref}
-          initial="hidden"
-          animate={inView ? "show" : "hidden"}
-          variants={stagger}
-          className="flex flex-col gap-5 mb-20 lg:mb-24"
+          className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16 lg:mb-20"
+          initial={{ opacity: 0, y: 40 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.85, ease: "easeOut" }}
         >
-          <motion.div variants={fadeUp} className="flex items-center gap-4">
-            <div className="h-px w-12" style={{ background: "var(--gold)" }} />
-            <span
-              className="uppercase tracking-[0.22em] text-xs"
-              style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}
+          <div className="flex flex-col gap-5">
+            <div className="flex items-center gap-4">
+              <div className="h-px w-12" style={{ background: "var(--gold)" }} />
+              <span className="uppercase tracking-[0.22em] text-xs" style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)" }}>
+                How we work
+              </span>
+            </div>
+            <h2
+              className="font-light text-white"
+              style={{ fontFamily: "var(--font-display)", fontSize: "clamp(2.2rem, 4.5vw, 4rem)", lineHeight: 1.06, maxWidth: "14ch" }}
             >
-              How we work
-            </span>
-          </motion.div>
-          <motion.h2
-            variants={fadeUp}
-            className="font-light text-white leading-[1.06]"
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(2.2rem, 4.5vw, 4rem)",
-              maxWidth: "18ch",
-            }}
-          >
-            A process built on{" "}
-            <em style={{ color: "var(--gold-soft)" }}>clarity</em> and craft.
-          </motion.h2>
+              Design{" "}
+              <em style={{ color: "var(--gold-soft)" }}>Process</em>
+            </h2>
+          </div>
+          <p className="max-w-xs text-sm leading-relaxed lg:text-right" style={{ color: "rgba(255,255,255,0.4)", fontFamily: "var(--font-label)" }}>
+            A process built on clarity and craft — from your first brief to final key handover.
+          </p>
         </motion.div>
 
-        {/* Steps grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 lg:gap-10">
-          {PROCESS.map((step, i) => (
-            <ProcessStep key={step.step} step={step} isLast={i === PROCESS.length - 1} />
-          ))}
+        {/* ═══ DESKTOP — snake path ═══ */}
+        <div className="hidden lg:block">
+          <div style={{ position: "relative", width: "100%", aspectRatio: `${VB_W} / ${VB_H}` }}>
+
+            {/* SVG track */}
+            <svg
+              viewBox={`0 0 ${VB_W} ${VB_H}`}
+              style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "visible" }}
+              fill="none"
+              preserveAspectRatio="xMidYMid meet"
+            >
+              {/* Filled track — warm translucent */}
+              <path
+                d="M 60 100 H 1140 A 90 90 0 0 1 1140 280 H 60 A 90 90 0 0 0 60 460 H 800"
+                stroke="rgba(176,137,104,0.14)"
+                strokeWidth="74"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* Subtle inner edge highlight */}
+              <path
+                d="M 60 100 H 1140 A 90 90 0 0 1 1140 280 H 60 A 90 90 0 0 0 60 460 H 800"
+                stroke="rgba(216,189,125,0.12)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                fill="none"
+              />
+              {/* End arrow */}
+              <polyline
+                points="790,436 820,460 790,484"
+                stroke="rgba(216,189,125,0.65)"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              {/* Gold dot at each step */}
+              {SNAKE_POS.map((p, i) => (
+                <circle key={i} cx={p.x} cy={p.y} r="5" fill="var(--gold)" opacity="0.75" />
+              ))}
+            </svg>
+
+            {/* Step circles */}
+            {PROCESS.map((step, i) => {
+              const pos = SNAKE_POS[i];
+              return (
+                <motion.div
+                  key={step.step}
+                  style={{
+                    position: "absolute",
+                    left: `${(pos.x / VB_W) * 100}%`,
+                    top: `${(pos.y / VB_H) * 100}%`,
+                    transform: "translate(-50%, -50%)",
+                    zIndex: 2,
+                  }}
+                  initial={{ opacity: 0, scale: 0.55 }}
+                  animate={inView ? { opacity: 1, scale: 1 } : {}}
+                  transition={{ duration: 0.6, delay: 0.25 + i * 0.16, ease: "easeOut" }}
+                >
+                  {/* Image circle */}
+                  <div
+                    style={{
+                      width: "clamp(78px, 8.5vw, 120px)",
+                      height: "clamp(78px, 8.5vw, 120px)",
+                      borderRadius: "50%",
+                      overflow: "hidden",
+                      border: "2px solid rgba(216,189,125,0.55)",
+                      boxShadow: "0 0 0 5px rgba(176,137,104,0.1), 0 10px 28px rgba(0,0,0,0.45)",
+                      position: "relative",
+                    }}
+                  >
+                    <Image
+                      src={STEP_IMAGES[i]}
+                      alt={step.title}
+                      fill
+                      sizes="(min-width:1280px) 120px, 8.5vw"
+                      className="object-cover"
+                    />
+                    {/* Number badge */}
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      background: "linear-gradient(160deg, transparent 45%, rgba(7,7,7,0.7) 100%)",
+                      display: "flex", alignItems: "flex-end", justifyContent: "flex-end",
+                      padding: "8px",
+                    }}>
+                      <span style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)", fontSize: "0.52rem", letterSpacing: "0.14em", fontWeight: 600 }}>
+                        {step.step}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Label */}
+                  <div
+                    style={{
+                      position: "absolute",
+                      ...(pos.above ? { bottom: "calc(100% + 11px)" } : { top: "calc(100% + 11px)" }),
+                      left: "50%",
+                      transform: "translateX(-50%)",
+                      textAlign: "center",
+                      whiteSpace: "nowrap",
+                    }}
+                  >
+                    <span style={{
+                      display: "block",
+                      color: "rgba(255,255,255,0.88)",
+                      fontFamily: "var(--font-display)",
+                      fontSize: "clamp(0.68rem, 1.05vw, 0.88rem)",
+                      fontWeight: 300,
+                      fontStyle: "italic",
+                    }}>
+                      {step.title}
+                    </span>
+                    <span style={{
+                      display: "block",
+                      color: "rgba(255,255,255,0.35)",
+                      fontFamily: "var(--font-label)",
+                      fontSize: "clamp(0.52rem, 0.6vw, 0.62rem)",
+                      letterSpacing: "0.1em",
+                      textTransform: "uppercase",
+                      marginTop: "3px",
+                    }}>
+                      {step.step}
+                    </span>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* ═══ MOBILE — vertical timeline ═══ */}
+        <div className="lg:hidden relative">
+          {/* Vertical gold line */}
+          <div
+            className="absolute left-[44px] top-0 bottom-0 w-px"
+            style={{ background: "linear-gradient(to bottom, transparent, rgba(176,137,104,0.35) 8%, rgba(176,137,104,0.35) 92%, transparent)" }}
+          />
+
+          {PROCESS.map((step, i) => {
+            const isLast = i === PROCESS.length - 1;
+            return (
+              <motion.div
+                key={step.step}
+                className="relative flex gap-5"
+                style={{ paddingBottom: isLast ? 0 : "2.5rem" }}
+                initial={{ opacity: 0, y: 24 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.6, delay: i * 0.12, ease: "easeOut" }}
+              >
+                {/* Circle image — centred on the vertical line */}
+                <div style={{ flexShrink: 0, width: "88px", display: "flex", justifyContent: "center" }}>
+                  <div style={{
+                    width: "88px",
+                    height: "88px",
+                    borderRadius: "50%",
+                    overflow: "hidden",
+                    border: "2px solid rgba(216,189,125,0.55)",
+                    boxShadow: "0 0 0 5px rgba(176,137,104,0.09), 0 6px 20px rgba(0,0,0,0.45)",
+                    position: "relative",
+                    flexShrink: 0,
+                  }}>
+                    <Image src={STEP_IMAGES[i]} alt={step.title} fill className="object-cover" sizes="88px" />
+                    {/* Gradient + step badge */}
+                    <div style={{
+                      position: "absolute", inset: 0,
+                      background: "linear-gradient(150deg, transparent 40%, rgba(7,7,7,0.72) 100%)",
+                      display: "flex", alignItems: "flex-end", justifyContent: "flex-end",
+                      padding: "7px",
+                    }}>
+                      <span style={{ color: "var(--gold-soft)", fontFamily: "var(--font-label)", fontSize: "0.5rem", letterSpacing: "0.14em", fontWeight: 600 }}>
+                        {step.step}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Text */}
+                <div className="flex flex-col justify-center gap-1.5 pt-1 pb-2">
+                  <span style={{
+                    color: "var(--gold)",
+                    fontFamily: "var(--font-label)",
+                    fontSize: "0.58rem",
+                    letterSpacing: "0.2em",
+                    textTransform: "uppercase",
+                  }}>
+                    Step {step.step}
+                  </span>
+                  <h3
+                    className="font-light text-white"
+                    style={{ fontFamily: "var(--font-display)", fontSize: "1.4rem", lineHeight: 1.1 }}
+                  >
+                    {step.title}
+                  </h3>
+                  <p
+                    className="leading-relaxed"
+                    style={{ color: "rgba(255,255,255,0.45)", fontFamily: "var(--font-label)", fontSize: "0.82rem", maxWidth: "34ch" }}
+                  >
+                    {step.desc}
+                  </p>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -662,11 +942,18 @@ export default function ServicesPage() {
         <SectionIntro />
       </div>
 
-      {/* Service cards */}
-      <div className="border-b" style={{ borderColor: "rgba(255,255,255,0.07)" }}>
-        {SERVICES.map((service, i) => (
-          <ServiceCard key={service.id} service={service} index={i} />
-        ))}
+      {/* Service icon grid */}
+      <div
+        className="max-w-7xl mx-auto px-6 lg:px-12 pb-20 lg:pb-28"
+      >
+        <div
+          className="grid grid-cols-1 sm:grid-cols-2 border-t border-l"
+          style={{ borderColor: "rgba(255,255,255,0.07)" }}
+        >
+          {SERVICES.map((service, i) => (
+            <ServiceCard key={service.id} service={service} index={i} />
+          ))}
+        </div>
       </div>
 
       <ProcessSection />

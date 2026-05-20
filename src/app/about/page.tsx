@@ -109,7 +109,7 @@ function HeroSection() {
     <section ref={ref} className="relative flex items-end overflow-hidden" style={{ minHeight: "92vh" }}>
       <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2400&q=92"
+          src="/images/about-us.jpg"
           alt="JK Interiors studio — premium interior design Hyderabad"
           fill
           priority
@@ -276,7 +276,7 @@ function StudioStorySection() {
         {/* Image */}
         <motion.div variants={fadeIn} className="relative min-h-[55vw] lg:min-h-0 order-2 lg:order-1">
           <Image
-            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1700&q=90"
+            src="/images/home.jpg"
             alt="Warm material palette — JK Interiors studio"
             fill
             sizes="(min-width:1024px) 50vw, 100vw"
@@ -395,7 +395,7 @@ function ImageQuoteSection() {
     <section ref={ref} className="relative overflow-hidden" style={{ minHeight: "60vh" }}>
       <motion.div className="absolute inset-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=2000&q=90"
+          src="/images/living-room.jpg"
           alt="Calm interior living space — JK Interiors"
           fill
           sizes="100vw"

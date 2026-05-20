@@ -87,7 +87,7 @@ function HeroSection() {
     <section ref={ref} className="relative flex items-end overflow-hidden" style={{ minHeight: "92vh" }}>
       <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=2400&q=92"
+          src="/images/living-room.jpg"
           alt="Refined interior with material restraint"
           fill
           priority
@@ -278,7 +278,7 @@ function EditorialSection() {
         {/* Image */}
         <motion.div variants={fadeIn} className="relative min-h-[50vw] lg:min-h-0 order-2 lg:order-1">
           <Image
-            src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1700&q=90"
+            src="/images/home.jpg"
             alt="Calm premium living room with layered lighting"
             fill
             sizes="(min-width:1024px) 50vw, 100vw"

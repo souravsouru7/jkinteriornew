@@ -42,7 +42,11 @@ export default function SiteFooter() {
 
       <div className="jk-section-inner jk-footer-bottom">
         <span>&copy; 2026 JK Interiors. All rights reserved.</span>
-        <span>Designed for quiet confidence.</span>
+        <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+          <Link href="/privacy-policy" style={{ color: "rgba(255,255,255,0.35)", fontFamily: "var(--font-label)", fontSize: "0.72rem", letterSpacing: "0.08em" }}>Privacy Policy</Link>
+          <span style={{ color: "rgba(255,255,255,0.15)" }}>·</span>
+          <span style={{ color: "rgba(255,255,255,0.25)", fontFamily: "var(--font-label)", fontSize: "0.72rem" }}>Designed for quiet confidence.</span>
+        </div>
       </div>
     </footer>
   );

@@ -1,8 +1,9 @@
 "use client";
 
-import { FormEvent, useRef, useState } from "react";
+import { FormEvent, useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import {
   motion,
   useInView,
@@ -82,7 +83,7 @@ function HeroSection() {
     <section ref={ref} className="relative flex items-end overflow-hidden" style={{ minHeight: "80vh" }}>
       <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=2400&q=92"
+          src="/images/home.jpg"
           alt="Premium interior consultation — JK Interiors"
           fill
           priority
@@ -170,18 +171,53 @@ function HeroSection() {
 
 // ─── Contact Form Section ─────────────────────────────────────────────────────
 
-type Status = "idle" | "sending" | "sent" | "error";
+const UTM_KEYS = [
+  "utm_source", "utm_medium", "utm_campaign", "utm_term",
+  "utm_content", "utm_adgroup", "utm_matchtype", "utm_device",
+  "utm_ad", "srd", "gad_source", "gad_campaignid", "gbraid", "gclid",
+];
+
+function captureUtms() {
+  const params = new URLSearchParams(window.location.search);
+  const stored: Record<string, string> = {};
+  UTM_KEYS.forEach((k) => {
+    const v = params.get(k);
+    if (v) { sessionStorage.setItem(k, v); stored[k] = v; }
+  });
+  return stored;
+}
+
+function readUtms(): Record<string, string> {
+  const out: Record<string, string> = {};
+  UTM_KEYS.forEach((k) => {
+    const v = sessionStorage.getItem(k);
+    if (v) out[k] = v;
+  });
+  return out;
+}
+
+type Status = "idle" | "sending" | "error";
 
 function ContactSection() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-5%" });
   const [status, setStatus] = useState<Status>("idle");
+  const router = useRouter();
+
+  useEffect(() => { captureUtms(); }, []);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("sending");
     const form = e.currentTarget;
-    const data = { ...Object.fromEntries(new FormData(form)), source: "contact-page" };
+    const utms = readUtms();
+    const formData = Object.fromEntries(new FormData(form));
+    const data = { ...formData, source: "contact-page", ...utms };
+
+    /* save email for GTM enhanced conversions on thank-you page */
+    const email = String(formData.email ?? "").trim();
+    if (email) sessionStorage.setItem("submittedEmail", email);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -189,8 +225,7 @@ function ContactSection() {
         body: JSON.stringify(data),
       });
       if (!res.ok) throw new Error();
-      form.reset();
-      setStatus("sent");
+      router.push("/thank-you");
     } catch {
       setStatus("error");
     }
@@ -316,47 +351,7 @@ function ContactSection() {
 
           {/* ── Right: form ── */}
           <motion.div variants={fadeUp}>
-            {status === "sent" ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.97 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="flex flex-col items-start gap-6 py-16"
-              >
-                <div
-                  className="w-14 h-14 flex items-center justify-center"
-                  style={{
-                    border: "1px solid rgba(216,189,125,0.4)",
-                    background: "rgba(216,189,125,0.06)",
-                  }}
-                >
-                  <span style={{ color: "var(--gold)", fontSize: "1.4rem" }}>✓</span>
-                </div>
-                <div className="flex flex-col gap-3">
-                  <h3
-                    className="font-light text-white"
-                    style={{ fontFamily: "var(--font-display)", fontSize: "2rem" }}
-                  >
-                    Enquiry received.
-                  </h3>
-                  <p
-                    className="leading-relaxed max-w-md text-sm"
-                    style={{ color: "rgba(255,255,255,0.5)", fontFamily: "var(--font-label)" }}
-                  >
-                    Thank you for reaching out. We'll review your brief and get back to you within
-                    24 hours with a clear next step.
-                  </p>
-                </div>
-                <button
-                  onClick={() => setStatus("idle")}
-                  className="jk-secondary-btn mt-2"
-                  style={{ minWidth: "auto", padding: "0 24px" }}
-                >
-                  Send another
-                </button>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-6" noValidate>
                 {/* Row 1: Name + Phone */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                   <FormField label="Full name" name="name" type="text" required placeholder="Arjun Mehta" />
@@ -409,7 +404,6 @@ function ContactSection() {
                   </span>
                 </div>
               </form>
-            )}
           </motion.div>
         </motion.div>
       </div>

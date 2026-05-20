@@ -28,8 +28,7 @@ const PROJECTS = [
     scope: "Living, dining & bedrooms",
     year: "2026",
     span: "tall",
-    image:
-      "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/home.jpg",
   },
   {
     id: "02",
@@ -39,19 +38,17 @@ const PROJECTS = [
     scope: "Storage, surfaces & lighting",
     year: "2026",
     span: "wide",
-    image:
-      "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/kitchen.jpg",
   },
   {
     id: "03",
-    title: "Executive Workspace",
-    category: "Commercial" as Filter,
+    title: "Premium Living Room",
+    category: "Residential" as Filter,
     location: "HITEC City",
-    scope: "Office planning, lounge & cabins",
+    scope: "Living room design & styling",
     year: "2025",
     span: "square",
-    image:
-      "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/living-room.jpg",
   },
   {
     id: "04",
@@ -61,19 +58,17 @@ const PROJECTS = [
     scope: "Wardrobes, dresser & storage",
     year: "2025",
     span: "tall",
-    image:
-      "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/wb-interior.jpg",
   },
   {
     id: "05",
-    title: "Layered Bedroom Styling",
+    title: "Home Theatre Design",
     category: "Styling" as Filter,
     location: "Madhapur",
-    scope: "Lighting, decor & textiles",
+    scope: "Entertainment room & AV setup",
     year: "2025",
     span: "square",
-    image:
-      "https://images.unsplash.com/photo-1617325247661-675ab4b64ae2?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/movie-theater.jpg",
   },
   {
     id: "06",
@@ -83,19 +78,17 @@ const PROJECTS = [
     scope: "Renovation and styling",
     year: "2024",
     span: "wide",
-    image:
-      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/about-us.jpg",
   },
   {
     id: "07",
-    title: "Retail Material Studio",
-    category: "Commercial" as Filter,
+    title: "Full Home Interiors",
+    category: "Residential" as Filter,
     location: "Banjara Hills",
-    scope: "Display, lighting & circulation",
+    scope: "Complete home turnkey execution",
     year: "2024",
     span: "tall",
-    image:
-      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/banner-image.jpg",
   },
   {
     id: "08",
@@ -105,8 +98,7 @@ const PROJECTS = [
     scope: "Workflow and storage",
     year: "2024",
     span: "square",
-    image:
-      "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/kitchen.jpg",
   },
   {
     id: "09",
@@ -116,8 +108,7 @@ const PROJECTS = [
     scope: "Furniture, lighting & decor",
     year: "2024",
     span: "wide",
-    image:
-      "https://images.unsplash.com/photo-1615874694520-474822394e73?auto=format&fit=crop&w=1500&q=92",
+    image: "/images/living-room.jpg",
   },
 ];
 
@@ -170,7 +161,7 @@ function HeroSection() {
       {/* Parallax image */}
       <motion.div className="absolute inset-0 z-0" style={{ y: imageY }}>
         <Image
-          src="https://images.unsplash.com/photo-1600210492493-0946911123ea?auto=format&fit=crop&w=2000&q=90"
+          src="/images/banner-image.jpg"
           alt="JK Interiors portfolio"
           fill
           priority
